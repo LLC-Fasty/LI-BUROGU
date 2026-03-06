@@ -254,7 +254,7 @@ export default function BlogPageDesign({ DarkMode, setDarkMode, cid }) {
             </div>
             <div className="md:px-6 px-2">
               <h1
-                className={`md:text-5xl text-3xl font-medium uppercase transition-all duration-300 ${DarkMode ? "text-[#F9F9F7]" : "text-[#1A1A1B]"}`}
+                className={`md:text-5xl text-2xl font-medium uppercase transition-all duration-300 ${DarkMode ? "text-[#F9F9F7]" : "text-[#1A1A1B]"}`}
               >
                 LI-Burogu
               </h1>
