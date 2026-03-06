@@ -159,7 +159,7 @@ export default function HomeMainDesign({ DarkMode, setDarkMode }) {
               to unfold. Burogu was built by the
               <span className="text-[#00ADB5] font-semibold">
                 {" "}
-                LICICO Founders
+                LICICO Founders{" "}
               </span>
               with that in mind.
             </h1>
