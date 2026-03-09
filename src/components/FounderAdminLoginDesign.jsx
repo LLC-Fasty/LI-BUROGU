@@ -73,7 +73,7 @@ export default function FounderAdminLoginDesign() {
         </div>
         <div className="py-2"></div>
         <div className="flex justify-center">
-          <p className="text-sm uppercase tracking-widest font-bold text-[#FFEE02] text-center w-125">
+          <p className="text-sm uppercase tracking-widest font-bold text-[#FFEE02] text-center md:w-125">
             This is a protected page. Only the founder admin can access this
             page. Please enter the correct admin key to generate the OTP and log
             in to the founder admin dashboard.

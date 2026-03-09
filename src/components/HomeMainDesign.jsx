@@ -174,7 +174,7 @@ export default function HomeMainDesign({ DarkMode, setDarkMode }) {
             className={`w-full h-0.5 mt-2 transition-all duration-300 ${DarkMode ? "bg-[#F9F9F7]" : "bg-[#1A1A1B]"}`}
           ></div>
         </div>
-        <div className="py-2">
+        <div className="py-2 hidden sm:block">
           <h1
             className={`text-center md:text-lg text-sm font-medium transition-all duration-300 ${DarkMode ? "text-[#F9F9F7]" : "text-[#1A1A1B]"}`}
           >
@@ -216,6 +216,21 @@ export default function HomeMainDesign({ DarkMode, setDarkMode }) {
             </div>
           </div>
         </div>
+      </div>
+      <div className="sm:hidden pb-2">
+        <div
+          className={`w-full h-0.5 mt-2 transition-all duration-300 ${DarkMode ? "bg-[#F9F9F7]" : "bg-[#1A1A1B]"}`}
+        ></div>
+        <div className="py-2">
+          <h1
+            className={`text-center md:text-lg text-sm font-medium transition-all duration-300 ${DarkMode ? "text-[#F9F9F7]" : "text-[#1A1A1B]"}`}
+          >
+            © 2026 LiCiCo. All rights reserved.
+          </h1>
+        </div>
+        <div
+          className={`w-full h-0.5 transition-all duration-300 ${DarkMode ? "bg-[#F9F9F7]" : "bg-[#1A1A1B]"}`}
+        ></div>
       </div>
     </div>
   );

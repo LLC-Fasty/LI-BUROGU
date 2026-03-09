@@ -62,6 +62,44 @@ export default function BlogPageDesign({ DarkMode, setDarkMode, cid }) {
   const handleLikeToggle = async (type) => {
     if (!blog?.id || !userInfo?.ipAddress) return;
 
+    const isLikeAction = type === "like";
+
+    const wasLiked = Liked;
+    const wasDisliked = DisLiked;
+
+    setBlog((prev) => {
+      let newLikes = prev.likes || 0;
+      let newDislikes = prev.dislikes || 0;
+
+      if (isLikeAction) {
+        if (wasLiked) {
+          newLikes -= 1;
+          setLiked(false);
+        } else {
+          newLikes += 1;
+          setLiked(true);
+          if (wasDisliked) {
+            newDislikes -= 1;
+            setDisLiked(false);
+          }
+        }
+      } else {
+        if (wasDisliked) {
+          newDislikes -= 1;
+          setDisLiked(false);
+        } else {
+          newDislikes += 1;
+          setDisLiked(true);
+          if (wasLiked) {
+            newLikes -= 1;
+            setLiked(false);
+          }
+        }
+      }
+
+      return { ...prev, likes: newLikes, dislikes: newDislikes };
+    });
+
     let iData = encodeSafe(
       JSON.stringify({
         blogId: blog.id,
@@ -69,16 +107,22 @@ export default function BlogPageDesign({ DarkMode, setDarkMode, cid }) {
         action: type,
       }),
     );
-    const res = await toggleInteraction(iData);
-    if (res.success) {
-      setLiked(res.userHasLiked);
-      setDisLiked(res.userHasDisliked);
-      setBlog((prev) => ({
-        ...prev,
-        likes: res.likes,
-        dislikes: res.dislikes,
-      }));
-    }
+
+    toggleInteraction(iData)
+      .then((res) => {
+        if (res.success) {
+          setLiked(res.userHasLiked);
+          setDisLiked(res.userHasDisliked);
+          setBlog((prev) => ({
+            ...prev,
+            likes: res.likes,
+            dislikes: res.dislikes,
+          }));
+        }
+      })
+      .catch((err) => {
+        // console.log("Narrative Sync Failed:", err);
+      });
   };
 
   const handleShare = () => {
